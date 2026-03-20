@@ -1,0 +1,277 @@
+1)
+Classe carro:
+
+package Package; 
+
+public class Carro {
+    String marca;
+    String modelo;
+    int anoFabricacao;
+}
+
+---------------------------
+ExecutaCarro:
+
+package Package;
+
+import java.util.Scanner;
+
+public class ExecutaCarro {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        Carro meuCarro = new Carro();
+        
+        System.out.println("Qual a marca do carro?");
+        meuCarro.marca = scanner.nextLine();
+        
+        System.out.println("Qual o modelo?");
+        meuCarro.modelo = scanner.nextLine();
+        
+        System.out.println("Qual o ano?");
+        meuCarro.anoFabricacao = scanner.nextInt();
+        
+        System.out.println("\nCarro montado: " + meuCarro.marca + " " + meuCarro.modelo + " do ano " + meuCarro.anoFabricacao);
+        
+        scanner.close();
+    }
+}
+=========================================================================================================================================
+
+2)
+Classe computador:
+
+package Package; 
+
+public class Computador {
+    String marca;
+    String modelo;
+    String tipo; 
+    double preco;
+}
+
+---------------------------
+ExecutaComputador:
+
+package Package;
+
+import java.util.Scanner;
+
+public class ExecutaComputador {
+
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        
+        Computador comp1 = new Computador(); 
+        
+        System.out.println("Cadastre o computador 1");
+        System.out.print("Qual marca? ");
+        comp1.marca = teclado.nextLine();
+        
+        System.out.print("Qual o modelo? ");
+        comp1.modelo = teclado.nextLine();
+        
+        System.out.print("Qual o tipo (notebook, tablet, desktop)? ");
+        comp1.tipo = teclado.nextLine();
+        
+        System.out.print("Qual o preço? R$ ");
+        comp1.preco = teclado.nextDouble();
+        
+    
+        Computador comp2 = new Computador(); 
+        
+        comp2.marca = "Positivo";
+        comp2.modelo = "Motion 14 Q4128c";
+        comp2.tipo = "Notebook";
+        comp2.preco = 1300.00;
+        
+        System.out.println("\nCOMPUTADORES CADASTRADOS");
+        System.out.println("Computador 1 (Digitado): " + comp1.tipo + " " + comp1.marca + " " + comp1.modelo + " - R$ " + comp1.preco);
+        System.out.println("Computador 2 (Código): " + comp2.tipo + " " + comp2.marca + " " + comp2.modelo + " - R$ " + comp2.preco);
+
+        teclado.close();
+    }
+}
+=========================================================================================================================================
+3)
+Classe Pessoa:
+
+package Package;
+
+public class Pessoa {
+    String nome;
+    int idade;
+    String genero;
+}
+
+---------------------------
+ExecutaPessoa:
+
+package Package;
+
+public class ExecutaPessoa {
+
+    public static void main(String[] args) {
+        
+        Pessoa minhaPessoa = new Pessoa();
+        
+        minhaPessoa.nome = "Victor";
+        minhaPessoa.idade = 19; 
+        minhaPessoa.genero = "Masculino";
+             
+        System.out.println("DADOS DA PESSOA");
+        System.out.println("Nome: " + minhaPessoa.nome);
+        System.out.println("Idade: " + minhaPessoa.idade + " anos");
+        System.out.println("Gênero: " + minhaPessoa.genero);
+
+    }
+}
+
+=========================================================================================================================================
+4)
+Classe Livro:
+
+package Package;
+
+public class Livro {
+    String titulo;
+    String autor;
+    int anoPublicacao;
+}
+
+---------------------------
+ExecutaLivro:
+
+package Package;
+
+public class ExecutaLivro {
+
+    public static void main(String[] args) {
+      
+        Livro meuLivro = new Livro();
+        
+        meuLivro.titulo = "Diario de um banana";
+        meuLivro.autor = "Jeff Kinney";
+        meuLivro.anoPublicacao = 2007;
+        
+        System.out.println("DADOS DO LIVRO");
+        System.out.println("Tutulo: " + meuLivro.titulo);
+        System.out.println("Autor: " + meuLivro.autor);
+        System.out.println("Ano de Publicacao: " + meuLivro.anoPublicacao);
+
+    }
+}
+
+=========================================================================================================================================
+
+5)
+Classe Produto:
+
+package Package;
+
+public class Produto {
+    String nome;
+    double preco;
+    int qtEmEstoque;
+}
+
+---------------------------
+ExecutaProduto:
+
+package Package;
+
+import java.util.Scanner;
+
+public class ExecutaProduto {
+
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+ 
+        Produto meuProduto = new Produto();
+        
+        System.out.println("CADASTRO DE PRODUTO");
+        
+        System.out.print("Digite o nome do produto: ");
+        meuProduto.nome = teclado.nextLine();
+
+        System.out.print("Digite o preco unitario: R$ ");
+        meuProduto.preco = teclado.nextDouble();
+        
+        System.out.print("Digite a quantidade em estoque: ");
+        meuProduto.qtEmEstoque = teclado.nextInt();
+        
+        double valorTotEstoque = meuProduto.preco * meuProduto.qtEmEstoque;
+ 
+        System.out.println("\nRESUMO");
+        System.out.println("Produto: " + meuProduto.nome);
+        System.out.println("Preço unitario: R$ " + meuProduto.preco);
+        System.out.println("Quantidade: " + meuProduto.qtEmEstoque + " unidades");
+        System.out.println("Valor Total em Estoque: R$ " + valorTotEstoque);
+        
+        teclado.close();
+    }
+}
+
+=========================================================================================================================================
+6)
+Classe Aluno:
+
+package Package;
+
+public class Aluno {
+    String nome;
+    String matricula;
+    double n1;
+    double n2;
+    double n3;
+}
+
+---------------------------
+ExecutaAluno:
+
+package Package;
+
+import java.util.Scanner;
+
+public class ExecutaAluno {
+
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        
+        Aluno meuAluno = new Aluno();
+        
+        System.out.println("SISTEMA DE NOTAS");
+        
+        System.out.print("Digite o nome do aluno: ");
+        meuAluno.nome = teclado.nextLine();
+        
+        System.out.print("Digite a matrícula: ");
+        meuAluno.matricula = teclado.nextLine();
+        
+        System.out.print("Digite a nota 1: ");
+        meuAluno.n1 = teclado.nextDouble();
+        
+        System.out.print("Digite a nota 2: ");
+        meuAluno.n2 = teclado.nextDouble();
+        
+        System.out.print("Digite a nota 3: ");
+        meuAluno.n3 = teclado.nextDouble();
+        
+        double media = (meuAluno.n1 + meuAluno.n2 + meuAluno.n3) / 3;
+        
+        System.out.println("\nBOLETIM DO ALUNO");
+        System.out.println("Nome: " + meuAluno.nome);
+        System.out.println("Matricula: " + meuAluno.matricula);
+        System.out.println("Media Final: " + media);
+        
+        if (media >= 6) {
+            System.out.println("APROVADO!");
+        } else {
+            System.out.println("REPROVADO!");
+        }
+        
+        teclado.close();
+    }
+}
+
+=========================================================================================================================================
