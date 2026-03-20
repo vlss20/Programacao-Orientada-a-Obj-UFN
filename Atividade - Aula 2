@@ -1,0 +1,285 @@
+PARTE 1
+
+4)
+
+package Projeto1;
+
+public class q1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int soma = 0;
+		for (int i = 1; i <= 100; i++) {
+		    soma = soma + i;
+		}
+		System.out.println("A soma dos numeros de 1 a 100 é: " + soma);
+	}
+
+}
+
+====================================================================================
+
+5)
+package Projeto1;
+
+import java.util.Scanner;
+
+public class Q5 {
+
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Digite um inteiro para calcular o fatorial: ");
+		int n = scanner.nextInt();
+
+		long fatorial = 1;
+		for (int i = 1; i <= n; i++) {
+		    fatorial = fatorial * i;
+		}
+		System.out.println("O fatorial de " + n + " eh: " + fatorial);
+		scanner.close();
+	}
+
+}
+
+====================================================================================
+
+6)
+package Projeto1;
+
+import java.util.Scanner;
+public class q6 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scanner = new Scanner(System.in);
+		int n;
+		do {
+		    System.out.print("Digite um numero (0 para sair): ");
+		    n = scanner.nextInt();
+		} while (n != 0);
+
+		System.out.println("Programa encerrado");
+		scanner.close();
+	}
+
+}
+====================================================================================
+
+7)
+package Projeto1;
+
+import java.util.Scanner;
+public class q7 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Scanner scanner = new Scanner(System.in);
+		double nota;
+		do {
+		    System.out.print("Digite a nota do aluno (-1 para sair): ");
+		    nota = scanner.nextDouble();
+		} while (nota != -1);
+
+		System.out.println("Programa encerrado.");
+		scanner.close();
+		
+	}
+
+}
+====================================================================================
+
+8)
+package Projeto1;
+
+import java.util.Scanner;
+public class q8 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner scanner = new Scanner(System.in);
+		String cidade = "";
+		while (!cidade.equalsIgnoreCase("São Paulo")) {
+		    System.out.print("Digite o nome de uma cidade: ");
+		    cidade = scanner.nextLine();
+		}
+		System.out.println("Encerrando programa");
+		scanner.close();
+	}
+
+}
+
+====================================================================================
+PARTE 2
+
+3)
+
+package projeto2;
+
+import java.util.Scanner;
+public class q3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner scanner = new Scanner(System.in);
+		double[] notas = new double[5];
+		double soma = 0;
+		for (int i = 0; i < 5; i++) {
+		    System.out.print("Digite a nota do aluno " + (i + 1) + ": ");
+		    notas[i] = scanner.nextDouble();
+		    soma = soma + notas[i];
+		}
+		double media = soma / 5;
+		System.out.println("A média das notas é: " + media);
+		scanner.close();
+		
+	}
+
+}
+
+
+====================================================================================
+
+5)
+package projeto2;
+
+
+import java.util.Scanner;
+public class q5 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Scanner scanner = new Scanner(System.in);
+		int[] numeros = new int[10];
+
+		System.out.println("Digite 10 inteiros:");
+		numeros[0] = scanner.nextInt();
+		int maior = numeros[0];
+		int menor = numeros[0];
+		for (int i = 1; i < 10; i++) {
+		    numeros[i] = scanner.nextInt();
+		    
+		    if (numeros[i] > maior) {
+		        maior = numeros[i];
+		    }
+		    if (numeros[i] < menor) {
+		        menor = numeros[i];
+		    }
+		}
+		System.out.println("Maior valor: " + maior);
+		System.out.println("Menor valor: " + menor);
+		scanner.close();
+		
+	}
+
+}
+
+====================================================================================
+
+6)
+package projeto2;
+
+
+import java.util.Scanner;
+public class q6 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scanner = new Scanner(System.in);
+		String[] cidades = new String[5];
+		int[] populacoes = new int[5];
+		
+		int iMaiorPopulacao = 0;
+		for (int i = 0; i < 5; i++) {
+		    System.out.print("Nome da cidade " + (i + 1) + ": ");
+		    cidades[i] = scanner.next(); 
+		    System.out.print("Populacao de " + cidades[i] + ": ");
+		    populacoes[i] = scanner.nextInt();	    
+		    if (populacoes[i] > populacoes[iMaiorPopulacao]) {
+		        iMaiorPopulacao = i;
+		    }
+		}
+
+		System.out.println("\nA cidade mais populosa eh " + cidades[iMaiorPopulacao] + 
+		                   " com " + populacoes[iMaiorPopulacao] + " habitantes.");
+		scanner.close();
+	}
+
+}
+
+====================================================================================
+
+7)
+package projeto2;
+
+import java.util.Scanner;
+public class q7 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scanner = new Scanner(System.in);
+		double[][] notas = new double[3][4];
+
+		for (int linha = 0; linha < 3; linha++) {
+		    System.out.println("Aluno " + (linha + 1));
+		    for (int coluna = 0; coluna < 4; coluna++) {
+		        System.out.print("Nota da disciplina " + (coluna + 1) + ": ");
+		        notas[linha][coluna] = scanner.nextDouble();
+		    }
+		}
+
+		System.out.println("\nRESULTADOS");
+		for (int coluna = 0; coluna < 4; coluna++) {
+		    double maior = notas[0][coluna];
+		    double menor = notas[0][coluna];
+		    
+		    for (int linha = 1; linha < 3; linha++) {
+		        if (notas[linha][coluna] > maior) maior = notas[linha][coluna];
+		        if (notas[linha][coluna] < menor) menor = notas[linha][coluna];
+		    }
+		    System.out.println("Disciplina " + (coluna + 1) + "  Maior: " + maior + " | Menor: " + menor);
+		}
+		scanner.close();
+	}
+
+}
+
+====================================================================================
+
+8)
+package projeto2;
+
+import java.util.Scanner;
+public class q8 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scanner = new Scanner(System.in);
+		int[] numeros = new int[10];
+		int qtPares = 0;
+		int qtImpares = 0;
+		for (int i = 0; i < 10; i++) {
+		    System.out.print("Digite o " + (i + 1) + " numero: ");
+		    numeros[i] = scanner.nextInt();
+		    
+		    if (numeros[i] % 2 == 0) {
+		        qtPares++;
+		    } else {
+		        qtImpares++;
+		    }
+		}
+		System.out.println("Quantidade de números PARES: " + qtPares);
+		System.out.println("Quantidade de números IMPARES: " + qtImpares);
+		scanner.close();
+	}
+
+}
+
+
+====================================================================================
