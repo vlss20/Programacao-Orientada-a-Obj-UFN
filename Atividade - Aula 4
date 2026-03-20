@@ -1,0 +1,310 @@
+AULA 4 - PROG OBJ - VICTOR LIMA
+
+1)
+Disciplina:
+
+
+package pkg;
+
+public class Disciplina {
+	String nome;
+    int cargaHoraria;
+    String professor;
+    public void setValores(String n, int c, String p) {
+        nome = n;
+        cargaHoraria = c;
+        professor = p;
+    }
+    public String getDados() {
+        return "Disciplina: " + nome + " / Carga: " + cargaHoraria + "h / Prof: " + professor;
+    }
+}
+
+-------------------------------------------------------------------------
+
+ExecutaDisciplina:
+
+
+package pkg;
+import java.util.Scanner;
+
+public class ExecutaDisciplina {
+	public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Disciplina d = new Disciplina();
+        System.out.println("Valores originais: " + d.getDados());
+
+        System.out.println("\nCadastro: ");
+        System.out.print("Nome da disciplina: ");
+        String n = scanner.nextLine();
+        System.out.print("Carga horaria: ");
+        int c = scanner.nextInt();
+        scanner.nextLine(); 
+        System.out.print("Professor: ");
+        String p = scanner.nextLine();
+
+        d.setValores(n, c, p);
+        System.out.println("\nValores atualizados: " + d.getDados());
+        scanner.close();
+    }
+}
+
+=========================================================================
+2)
+Livro:
+
+
+package pkg;
+
+public class Livro {
+	String titulo, autor, genero;
+    int ano;
+    boolean emprestado; 
+
+    public String retornarInfo() {
+        String status = emprestado ? "Sim" : "Não";
+        return titulo + " (" + ano + ") - " + autor + " / Emprestado? " + status;
+    }
+
+    public void emprestar() {
+        if (!emprestado) {
+            emprestado = true;
+            System.out.println("Emprestimo realizado com sucesso!");
+        } else {
+            System.out.println("O livro ja esta emprestado.");
+        }
+    }
+
+    public void devolver() {
+        if (emprestado) {
+            emprestado = false;
+            System.out.println("Livro devolvido!");
+        } else {
+            System.out.println("O livro ja estava na biblioteca.");
+        }
+    }
+}
+
+-------------------------------------------------------------------------
+
+ExecutaLivro:
+
+
+package pkg;
+
+public class ExecutaLivro {
+
+	public static void main(String[] args) {
+        Livro l = new Livro();
+        l.titulo = "Harry Potter e a Pedra Filosofal"; l.autor = "JK rowling"; l.ano = 1997; l.genero = "Fantasia";
+        System.out.println(l.retornarInfo());
+        l.emprestar();
+        System.out.println(l.retornarInfo());
+        l.devolver();
+    }
+}
+
+=========================================================================
+
+3)
+Pessoa:
+
+package pkg;
+
+public class Pessoa {
+
+	String nome, email, dataNascimento, endereco;
+    boolean admin;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void promoverAdmin() {
+        admin = true;
+    }
+}
+
+-------------------------------------------------------------------------
+
+ExecutaPessoa:
+
+
+package pkg;
+import java.util.Scanner;
+
+public class ExecutaPessoa {
+	public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Pessoa p1 = new Pessoa();
+        Pessoa p2 = new Pessoa();
+
+        System.out.println("Pessoa 1:");
+        p1.nome = scanner.nextLine();
+        p1.email = "p1@email.com"; 
+
+        System.out.println("Pessoa 2:");
+        p2.nome = scanner.nextLine();
+        p2.email = "p2@email.com";
+
+        p1.promoverAdmin();
+
+        System.out.println("\nResumo:");
+        System.out.println(p1.nome + " eh admin? " + p1.admin);
+        System.out.println(p2.nome + " eh admin? " + p2.admin);
+        scanner.close();
+    }
+}
+
+=========================================================================
+
+4)
+ContaCorrente:
+
+
+package pkg;
+
+public class ContaCorrente {
+
+	float saldo;
+
+    public void definirSaldoInicial(float valor) {
+        saldo = valor;
+    }
+
+    public void depositar(float valor) {
+        saldo += valor;
+    }
+
+    public boolean sacar(float valor) {
+        if (saldo >= valor) {
+            saldo -= valor;
+            return true;
+        } else {
+            System.out.println("Saldo insuficiente para sacar " + valor);
+            return false;
+        }
+    }
+}
+
+-------------------------------------------------------------------------
+
+ExecutaContaCorrente:
+
+
+package pkg;
+
+public class ExecutaContaCorrente {
+	public static void main(String[] args) {
+        ContaCorrente novaConta = new ContaCorrente();
+        
+        novaConta.definirSaldoInicial(1000f);
+        System.out.println("Saldo: " + novaConta.saldo);
+        
+        novaConta.sacar(500f);
+        novaConta.depositar(50f);
+        System.out.println("Saldo: " + novaConta.saldo);
+        
+        novaConta.sacar(600f);
+        System.out.println("Saldo Final: " + novaConta.saldo);
+    }
+}
+
+=========================================================================
+
+5)
+Pessoa5:
+
+
+package pkg;
+
+public class Pessoa5 {
+
+	String nome;
+    int idade;
+    
+    public Pessoa5(String n, int i) {
+        nome = n;
+        idade = i;
+        System.out.println("[Construtor 1 rodou] Parametros recebidos: " + n + " e " + i);
+    }
+
+    public Pessoa5(int i) {
+        idade = i;
+        System.out.println("[Construtor 2 rodou] Parametro recebido: " + i);
+    }
+}
+
+-------------------------------------------------------------------------
+
+ExecutaPessoa5:
+
+
+package pkg;
+import java.util.Scanner;
+
+public class ExecutaPessoa5 {
+	public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Qual construtor quer usar?");
+        System.out.println("1 - Nome e Idade");
+        System.out.println("2 - Apenas Idade");
+        int opcao = scanner.nextInt();
+
+        if (opcao == 1) {
+            Pessoa5 p = new Pessoa5("Victor", 19);
+        } else if (opcao == 2) {
+            Pessoa5 p = new Pessoa5(19);
+        }
+        
+        scanner.close();
+    }
+}
+
+=========================================================================
+
+6)
+Aluno3:
+
+
+package pkg;
+
+public class Aluno3 {
+	String nome, matricula, dataNascimento;
+    int anoIngresso;
+
+    public Aluno3(String n, String m) {
+        nome = n; matricula = m;
+        System.out.println("Aluno criado pelo Construtor 1. Nome: "+ nome + "/ Matricula: " + matricula);
+    }
+
+    public Aluno3(String d) {
+        dataNascimento = d;
+        System.out.println("Data de Nascimento: " + dataNascimento);
+    }
+
+    public Aluno3(String n, String d, int a) {
+        nome = n; dataNascimento = d; anoIngresso = a;
+        System.out.println("Nome: "+ nome +"/ Nascimento: "+ dataNascimento + "/Ano de Ingresso: " +anoIngresso );
+    }
+}
+
+-------------------------------------------------------------------------
+
+ExecutaAluno3:
+
+
+package pkg;
+
+public class ExecutaAluno3 {
+
+	    public static void main(String[] args) {
+	   
+	        Aluno3 a1 = new Aluno3("Victor", "MAT-20711104");
+	        Aluno3 a2 = new Aluno3("20/06/2006");
+	        Aluno3 a3 = new Aluno3("Rafael", "11/09/2000", 2026);
+	    }
+	}
+
+=========================================================================
