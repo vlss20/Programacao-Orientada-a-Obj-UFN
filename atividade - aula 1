@@ -1,0 +1,351 @@
+EX1)
+package Projeto;
+
+import java.util.Scanner;
+
+public class Ex1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		        Scanner teclado = new Scanner(System.in);
+		        
+		        System.out.println("Digite o primeiro numero: ");
+		        float a = teclado.nextFloat();
+		        System.out.println("Primeiro numero digitado: " + a);
+		        
+		        System.out.println("Digite o segundo numero: ");
+		        float b = teclado.nextFloat();
+		        System.out.println("Segundo numero digitado: " + b);
+		         
+		        System.out.println("\nQual operacao fazer?");
+		        System.out.println("1 - Multiplicacao");
+		        System.out.println("2 - Subtracao");
+		        System.out.println("3 - Soma");
+		        System.out.println("4 - Divisao");
+		        float op = teclado.nextFloat();
+		         
+		        if (op == 1) {  
+		            float rm = a * b;
+		            System.out.println("Resultado da multiplicacao: " + rm);
+		        }
+		        if (op == 2) {
+		            float rsub = a - b;
+		            System.out.println("Resultado da subtracao: " + rsub);
+		        }
+		        if (op == 3) {
+		            float rsom = a + b;
+		            System.out.println("Resultado da soma: " + rsom);
+		        }
+		        if (op == 4) {
+		            float rdiv1 = a / b;
+		            System.out.println("Resultado da divisao: " + rdiv1);
+		       
+		            
+		        }
+		
+	}
+
+}
+
+=================================================================================================
+
+EX2)
+package pkg;
+
+import java.util.Scanner;
+
+public class Ex2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	  float quilinicial;
+	  float quilfinal;
+	  float comb;
+	  float valor;
+	  float precocomb = 4.90f;
+	  float totkm;
+	  float mediacons;
+	  double lucro;
+	  
+	  Scanner teclado = new Scanner(System.in);
+      System.out.println("Digite a quilometragem inicial: ");
+      quilinicial = teclado.nextFloat();
+      
+      System.out.println("Digite a quilometragem final: ");
+      quilfinal = teclado.nextFloat();
+      
+      System.out.println("Litros de combustivel gasto: ");
+      comb = teclado.nextFloat();
+      
+      System.out.println("Valor total recebido: ");
+      valor = teclado.nextFloat();
+      
+      totkm = quilfinal - quilinicial;
+      
+      mediacons = totkm/comb;
+      
+      lucro = valor - (comb*4.90);
+      
+      
+      System.out.println("O total da quilometragem é de: "+totkm);
+      System.out.println("A media do consumo é de: "+mediacons);
+      System.out.println("O lucro do dia foi de: "+lucro);
+                   
+	}
+
+}
+=================================================================================================
+
+EX3)
+package Projeto;
+
+import java.util.Scanner;
+
+public class ex3 {
+
+	public static void main(String[] args) {
+				// TODO Auto-generated method stub
+
+				Scanner scanner = new Scanner(System.in);
+				float a = scanner.nextFloat();
+				float b = scanner.nextFloat();
+				float c = scanner.nextFloat();
+				float d = scanner.nextFloat();
+				
+				float media = ( a + b + c + d) / 4;
+				System.out.println("Media: " +media);
+				System.out.println("Valores maiores que a media:");
+				
+				if (a>media) System.out.println(a);
+				if (b>media) System.out.println(b);
+				if (c>media) System.out.println(c);
+				if (d>media) System.out.println(d);
+						
+	}
+
+}
+=================================================================================================
+
+EX4)
+package Projeto;
+
+import java.util.Scanner;
+
+public class ex4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ponto X: ");
+        double x = scanner.nextDouble();
+
+        System.out.print("Ponto Y: ");
+        double y = scanner.nextDouble();
+
+        if (x == 0 && y == 0) {
+            System.out.println("O ponto esta na origem");
+        } else if (x == 0) {
+            System.out.println("O ponto esta sobre o eixo Y");
+        } else if (y == 0) {
+            System.out.println("O ponto esta sobre o eixo X");
+        } else if (x > 0 && y > 0) {
+            System.out.println("O ponto esta no 1 Quadrante");
+        } else if (x < 0 && y > 0) {
+            System.out.println("O ponto esta no 2 Quadrante");
+        } else if (x < 0 && y < 0) {
+            System.out.println("O ponto esta no 3 Quadrante");
+        } else {
+            System.out.println("O ponto esta no 4 Quadrante");
+        }
+	}
+
+}
+=================================================================================================
+
+EX5)
+package Projeto;
+
+import java.util.Scanner;
+
+public class ex5 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Digite 3 valores:");
+        double a = scanner.nextDouble();
+        double b = scanner.nextDouble();
+        double c = scanner.nextDouble();
+
+        double maior = a;
+
+        if (b > maior) {
+            maior = b;
+        }
+        if (c > maior) {
+            maior = c;
+        }
+
+        System.out.println("O maior valor é: " +maior);
+	}
+
+}
+=================================================================================================
+
+EX6)
+package Projeto;
+
+import java.util.Scanner;
+
+public class ex6 {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("Digite 3 valores:");
+        double a = scanner.nextDouble();
+        double b = scanner.nextDouble();
+        double c = scanner.nextDouble();
+
+        double temp;
+        if (a > b) {
+            temp = a;
+            a = b;
+            b = temp;
+        }
+        if (a > c) {
+            temp = a;
+            a = c;
+            c = temp;
+        }
+        if (b > c) {
+            temp = b;
+            b = c;
+            c = temp;
+        }
+
+        System.out.println("\nValores em ordem crescente:");
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(c);
+		
+		
+	}
+
+}
+=================================================================================================
+
+EX7)
+package Projeto;
+
+import java.util.Scanner;
+
+public class ex7 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Digite 2 valores inteiros:");
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+
+        if (a != 0 && b != 0) {
+            if (a % b == 0 || b % a == 0) {
+                System.out.println("Sao multiplos");
+            } else {
+                System.out.println("Nao sao multiplos");
+            }
+        } else {
+            System.out.println("Um dos valores eh 0, nao fazer divisao por 0");
+        }
+	}
+
+}
+=================================================================================================
+
+EX8)
+package Projeto;
+
+import java.util.Scanner;
+
+public class ex8 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	        Scanner scanner = new Scanner(System.in);
+
+	        System.out.print("Digite a idade: ");
+	        int idade = scanner.nextInt();
+
+	        if (idade < 16) {
+	            System.out.println("Pessoa nao apta a votar");
+	        } else if ((idade >= 16 && idade < 18) || idade > 70) {
+	            System.out.println("O voto eh facultativo");
+	        } else {
+	            System.out.println("O voto eh obrigatorio");
+	        }
+		
+		
+	}
+
+}
+=================================================================================================
+
+EX9)
+package Projeto;
+
+import java.util.Scanner;
+
+public class ex9 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite o primeiro numero: ");
+        double n1 = scanner.nextDouble();
+
+        System.out.print("Digite o segundo numero: ");
+        double n2 = scanner.nextDouble();
+
+        System.out.println("\nEscolha a operacao:");
+        System.out.println("1 - Soma");
+        System.out.println("2 - Subtracao");
+        System.out.println("3 - Multiplicação");
+        System.out.println("4 - Divisão");
+        System.out.print("Opção: ");
+        int op = scanner.nextInt();
+
+        switch (op) {
+            case 1:
+                System.out.println("Resultado: " + (n1 + n2));
+                break;
+            case 2:
+                System.out.println("Resultado: " + (n1 - n2));
+                break;
+            case 3:
+                System.out.println("Resultado: " + (n1 * n2));
+                break;
+            case 4:
+                if (n2 != 0) {
+                    System.out.println("Resultado: " + (n1 / n2));
+                } else {
+                    System.out.println("Erro: Divisao por zero");
+                }
+                break;
+            default:
+                System.out.println("Opcao invalida");
+                break;
+        }
+
+	}
+
+}
+=================================================================================================
+
