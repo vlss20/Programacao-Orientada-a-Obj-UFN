@@ -1,0 +1,524 @@
+1)
+
+package pkg;
+
+public class Produto {
+	String nome;
+    double preco;
+    int quantidade;
+
+    public Produto(String nome, double preco, int quantidade) {
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidade = quantidade;
+    }
+
+    public double calcularValorTotalEstoque() {
+        return preco * quantidade;
+    }
+
+    public boolean temEstoque() {
+        return quantidade > 0;
+    }
+
+    public void adicionarEstoque(int qtd) {
+        quantidade += qtd;
+    }
+
+    public boolean vender(int qtd) {
+        if (quantidade >= qtd) {
+            quantidade -= qtd;
+            return true;
+        }
+        return false;
+    }
+}
+
+---------------------------------------------------------------------------------
+
+package pkg;
+
+public class ExecutaProduto {
+	    public static void main(String[] args) {
+	        Produto p = new Produto("Teclado", 150.0, 10);
+	        
+	        System.out.println("Valor em estoque: R$ " + p.calcularValorTotalEstoque());
+	        System.out.println("Vendeu 3? " + p.vender(3));
+	        System.out.println("Quantidade atual: " + p.quantidade);
+	        p.adicionarEstoque(5);
+	        System.out.println("Quantidade após reposição: " + p.quantidade);
+	    }
+	}
+
+=================================================================================
+
+2)
+
+package pkg;
+
+public class ContaBancaria {
+	String titular;
+    double saldo;
+
+    public ContaBancaria(String titular, double saldoInicial) {
+        this.titular = titular;
+        this.saldo = saldoInicial;
+    }
+
+    public void depositar(double valor) {
+        saldo += valor;
+    }
+
+    public boolean sacar(double valor) {
+        if (saldo >= valor) {
+            saldo -= valor;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean transferir(double valor, ContaBancaria destino) {
+        if (this.sacar(valor)) {
+            destino.depositar(valor);
+            return true;
+        }
+        return false;
+    }
+
+    public double consultarSaldo() {
+        return saldo;
+    }
+}
+
+---------------------------------------------------------------------------------
+
+package pkg;
+
+public class ExecutaContaBancaria {
+
+	public static void main(String[] args) {
+        ContaBancaria conta1 = new ContaBancaria("Victor", 1000.0);
+        ContaBancaria conta2 = new ContaBancaria("Joao", 500.0);
+
+        conta1.transferir(200.0, conta2);
+        
+        System.out.println("Saldo Victor: R$ " + conta1.consultarSaldo());
+        System.out.println("Saldo Joao: R$ " + conta2.consultarSaldo());
+    }
+}
+
+=================================================================================
+
+3)
+
+package pkg;
+
+public class Aluno {
+	String nome;
+    double nota1, nota2, nota3;
+
+    public Aluno(String nome, double nota1, double nota2, double nota3) {
+        this.nome = nome;
+        this.nota1 = nota1;
+        this.nota2 = nota2;
+        this.nota3 = nota3;
+    }
+
+    public double calcularMedia() {
+        return (nota1 + nota2 + nota3) / 3.0;
+    }
+
+    public boolean aprovado() {
+        return calcularMedia() >= 7.0;
+    }
+
+    public double maiorNota() {
+        return Math.max(nota1, Math.max(nota2, nota3));
+    }
+
+    public double menorNota() {
+        return Math.min(nota1, Math.min(nota2, nota3));
+    }
+}
+
+---------------------------------------------------------------------------------
+
+
+package pkg;
+
+public class ExecutaAluno {
+
+	public static void main(String[] args) {
+        Aluno a = new Aluno("Carlos", 6.5, 8.0, 7.5);
+        
+        System.out.printf("Média: %.2f\n", a.calcularMedia());
+        System.out.println("Aprovado? " + a.aprovado());
+        System.out.println("Maior Nota: " + a.maiorNota());
+        System.out.println("Menor Nota: " + a.menorNota());
+    }
+}
+
+=================================================================================
+
+4)
+
+package pkg;
+
+public class Retangulo {
+
+	double largura, altura;
+
+    public Retangulo(double largura, double altura) {
+        this.largura = largura;
+        this.altura = altura;
+    }
+
+    public double calcularArea() {
+        return largura * altura;
+    }
+
+    public double calcularPerimetro() {
+        return 2 * (largura + altura);
+    }
+
+    public double calcularDiagonal() {       
+        return Math.sqrt((largura * largura) + (altura * altura));
+    }
+
+    public boolean ehQuadrado() {
+        return largura == altura;
+    }
+}
+
+---------------------------------------------------------------------------------
+
+package pkg;
+
+public class ExecutaRetangulo {
+
+	public static void main(String[] args) {
+        Retangulo r = new Retangulo(4.0, 3.0);
+        
+        System.out.println("Área: " + r.calcularArea());
+        System.out.println("Perímetro: " + r.calcularPerimetro());
+        System.out.println("Diagonal: " + r.calcularDiagonal());
+        System.out.println("É quadrado? " + r.ehQuadrado());
+    }
+}
+
+
+=================================================================================
+
+5)
+
+package pkg;
+
+public class Funcionario {
+
+	String nome;
+    double salario;
+    int horasExtras;
+
+    public Funcionario(String nome, double salario, int horasExtras) {
+        this.nome = nome;
+        this.salario = salario;
+        this.horasExtras = horasExtras;
+    }
+
+    public double calcularValorHoraExtra() {
+        return horasExtras * 50.0;
+    }
+
+    public double calcularPagamentoTotal() {
+        return salario + calcularValorHoraExtra();
+    }
+
+    public void adicionarHorasExtras(int horas) {
+        this.horasExtras += horas;
+    }
+
+    public double salarioAnual() {
+        return salario * 12;
+    }
+}
+
+---------------------------------------------------------------------------------
+
+package pkg;
+
+public class ExecutaFuncionario {
+	public static void main(String[] args) {
+        Funcionario f = new Funcionario("Mariana", 3000.0, 10);
+        
+        f.adicionarHorasExtras(5);
+        System.out.println("Pagamento do Mês: R$ " + f.calcularPagamentoTotal());
+        System.out.println("Salário Anual (Base): R$ " + f.salarioAnual());
+    }
+}
+
+
+=================================================================================
+
+6)
+
+package pkg;
+
+public class Carro {
+
+	String modelo;
+    int velocidadeAtual;
+    int velocidadeMaxima;
+
+    public Carro(String modelo, int velocidadeAtual, int velocidadeMaxima) {
+        this.modelo = modelo;
+        this.velocidadeAtual = velocidadeAtual;
+        this.velocidadeMaxima = velocidadeMaxima;
+    }
+
+    public void acelerar(int valor) {
+        if (velocidadeAtual + valor <= velocidadeMaxima) {
+            velocidadeAtual += valor;
+        } else {
+            velocidadeAtual = velocidadeMaxima;
+        }
+    }
+
+    public void frear(int valor) {
+        if (velocidadeAtual - valor >= 0) {
+            velocidadeAtual -= valor;
+        } else {
+            velocidadeAtual = 0;
+        }
+    }
+
+    public boolean atingiuVelocidadeMaxima() {
+        return velocidadeAtual == velocidadeMaxima;
+    }
+
+    public double calcularTempoViagem(double distancia) {
+        if (velocidadeAtual == 0) return 0;
+        return distancia / velocidadeAtual;
+    }
+}
+
+---------------------------------------------------------------------------------
+
+package pkg;
+
+public class ExecutaCarro {
+
+	public static void main(String[] args) {
+        Carro c = new Carro("Sedan", 60, 120);
+        
+        c.acelerar(40);
+        System.out.println("Velocidade atual: " + c.velocidadeAtual + " km/h");
+        System.out.println("Tempo para 200km: " + c.calcularTempoViagem(200.0) + " horas");
+    }
+}
+
+=================================================================================
+
+7)
+
+package pkg;
+
+public class Pedido {
+
+	int numero;
+    String produto;
+    double preco;
+    int quantidade;
+
+    public Pedido(int numero, String produto, double preco, int quantidade) {
+        this.numero = numero;
+        this.produto = produto;
+        this.preco = preco;
+        this.quantidade = quantidade;
+    }
+
+    public double calcularSubtotal() {
+        return preco * quantidade;
+    }
+
+    public double calcularDesconto(double percentual) {
+        return calcularSubtotal() * (percentual / 100.0);
+    }
+
+    public double calcularTotal(double percentualDesconto) {
+        return calcularSubtotal() - calcularDesconto(percentualDesconto);
+    }
+
+    public String resumoPedido() {
+        return "Pedido #" + numero + " - " + quantidade + "x " + produto + " (Subtotal: R$" + calcularSubtotal() + ")";
+    }
+}
+
+---------------------------------------------------------------------------------
+
+package pkg;
+
+public class ExecutaPedido {
+		public static void main(String[] args) {
+	        Pedido p = new Pedido(101, "Monitor", 800.0, 2);
+	        
+	        System.out.println(p.resumoPedido());
+	        System.out.println("Desconto 10%: R$ " + p.calcularDesconto(10));
+	        System.out.println("Total a pagar: R$ " + p.calcularTotal(10));
+	    }
+	}
+
+=================================================================================
+
+8)
+
+package pkg;
+
+public class Filme {
+	String titulo;
+    int duracao;
+    int classificacaoEtaria;
+
+    public Filme(String titulo, int duracao, int classificacaoEtaria) {
+        this.titulo = titulo;
+        this.duracao = duracao;
+        this.classificacaoEtaria = classificacaoEtaria;
+    }
+
+    public double converterDuracaoHoras() {
+        return duracao / 60.0;
+    }
+
+    public boolean podeAssistir(int idade) {
+        return idade >= classificacaoEtaria;
+    }
+
+    public String descricaoFilme() {
+        return titulo + " (" + duracao + " min) - Classificação: " + classificacaoEtaria + " anos.";
+    }
+}
+
+---------------------------------------------------------------------------------
+
+
+package pkg;
+
+public class ExecutaFilme {
+	public static void main(String[] args) {
+        Filme f = new Filme("Matrix", 136, 14);
+        
+        System.out.println(f.descricaoFilme());
+        System.out.printf("Duração em horas: %.2f\n", f.converterDuracaoHoras());
+        System.out.println("Pessoa de 12 anos pode assistir? " + f.podeAssistir(12));
+    }
+}
+
+=================================================================================
+
+9)
+
+package pkg;
+
+public class Livro {
+	String titulo, autor;
+    int paginas;
+    boolean emprestado;
+
+    public Livro(String titulo, String autor, int paginas, boolean emprestado) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.paginas = paginas;
+        this.emprestado = emprestado;
+    }
+
+    public boolean emprestar() {
+        if (!emprestado) {
+            emprestado = true;
+            return true;
+        }
+        return false;
+    }
+
+    public void devolver() {
+        emprestado = false;
+    }
+
+    public boolean estaDisponivel() {
+        return !emprestado;
+    }
+
+    public String detalhesLivro() {
+        return titulo + " por " + autor + " (" + paginas + " páginas). Disponível? " + estaDisponivel();
+    }
+}
+
+---------------------------------------------------------------------------------
+
+package pkg;
+
+public class ExecutaLivro {
+
+	public static void main(String[] args) {
+        Livro l = new Livro("Don Quixote", "Miguel de Cervantes", 162, false);
+        
+        System.out.println(l.detalhesLivro());
+        l.emprestar();
+        System.out.println("Após empréstimo: " + l.detalhesLivro());
+    }
+}
+
+=================================================================================
+
+10)
+
+package pkg;
+
+public class Time {
+	String nome;
+    int golsMarcados;
+    int golsSofridos;
+
+    public Time(String nome, int golsMarcados, int golsSofridos) {
+        this.nome = nome;
+        this.golsMarcados = golsMarcados;
+        this.golsSofridos = golsSofridos;
+    }
+
+    public void marcarGol() {
+        golsMarcados++;
+    }
+
+    public void sofrerGol() {
+        golsSofridos++;
+    }
+
+    public int saldoGols() {
+        return golsMarcados - golsSofridos;
+    }
+
+    public String resultadoPartida() {
+        int saldo = saldoGols();
+        if (saldo > 0) return "Vitória";
+        else if (saldo == 0) return "Empate";
+        else return "Derrota";
+    }
+}
+
+---------------------------------------------------------------------------------
+
+package pkg;
+
+public class ExecutaTime {
+	public static void main(String[] args) {
+        Time t = new Time("Meu Time", 2, 2);
+        
+        t.marcarGol();
+        t.sofrerGol();
+        t.marcarGol();
+        
+        System.out.println("Saldo de Gols: " + t.saldoGols());
+        System.out.println("Resultado da Partida: " + t.resultadoPartida());
+    }
+}
+
+=================================================================================
+
