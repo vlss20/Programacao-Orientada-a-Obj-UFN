@@ -1,0 +1,376 @@
+1)
+
+package Projeto;
+
+public class ContaBancaria {
+
+	private double saldo;
+	private double limite;
+	
+	public double getSaldo() {
+		return saldo;
+	}
+	
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+
+	public  double getLimite() {
+		return limite;
+	   }
+	public void setLimite(double limite) {
+		this.limite = limite;
+	}
+	
+	public boolean saque(double valor){
+		
+		if (valor <= (saldo + limite)) {
+			saldo -= valor;
+			return true;
+		}
+		
+		return false;
+	}
+}
+
+-------------------------------------------------------------------------------
+
+package Projeto;
+
+import java.util.Scanner;
+
+public class ExecutaConta {
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        ContaBancaria conta = new ContaBancaria();
+
+        System.out.print("Defina o saldo inicial: R$ ");
+        conta.setSaldo(teclado.nextDouble());
+
+        System.out.print("Defina o limite da conta: R$ ");
+        conta.setLimite(teclado.nextDouble());
+
+        System.out.print("Qual valor deseja sacar? R$ ");
+        double valorSaque = teclado.nextDouble();
+
+        if (conta.saque(valorSaque)) {
+            System.out.println("Saque realizado! Novo saldo: R$ " + conta.getSaldo());
+        } else {
+            System.out.println("Saque negado. Valor ultrapassa o saldo e o limite.");
+        }
+
+        teclado.close();
+    }
+}
+
+===============================================================================
+
+2)
+
+package Projeto;
+
+public class Circulo {
+    private double raio;
+
+    public double getRaio() {
+        return raio;
+    }
+
+    public void setRaio(double raio) {
+        this.raio = raio;
+    }
+
+    public double calculaArea() {
+        return Math.PI * (raio * raio);
+    }
+}
+
+-------------------------------------------------------------------------------
+
+package Projeto;
+
+import java.util.Scanner;
+
+public class ExecutaCirculo {
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        Circulo circulo = new Circulo();
+
+        System.out.print("Digite o raio do círculo: ");
+        circulo.setRaio(teclado.nextDouble());
+
+        System.out.printf("A área do círculo é: %.2f\n", circulo.calculaArea());
+
+        teclado.close();
+    }
+}
+
+===============================================================================
+
+3)
+
+package Projeto;
+
+public class Retangulo {
+    private double base;
+    private double altura;
+
+    public double getBase() {
+        return base;
+    }
+
+    public void setBase(double base) {
+        this.base = base;
+    }
+
+    public double getAltura() {
+        return altura;
+    }
+
+    public void setAltura(double altura) {
+        this.altura = altura;
+    }
+
+    public double calculaArea() {
+        return base * altura;
+    }
+}
+
+-------------------------------------------------------------------------------
+
+package Projeto;
+
+import java.util.Scanner;
+
+public class ExecutaRetangulo {
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        Retangulo retangulo = new Retangulo();
+
+        System.out.print("Digite a base do retângulo: ");
+        retangulo.setBase(teclado.nextDouble());
+
+        System.out.print("Digite a altura do retângulo: ");
+        retangulo.setAltura(teclado.nextDouble());
+
+        System.out.println("A área do retângulo é: " + retangulo.calculaArea());
+
+        teclado.close();
+    }
+}
+
+===============================================================================
+
+4)
+
+package Projeto;
+
+public class Carro {
+    private String marca;
+    private String modelo;
+    private int ano;
+
+    public String getMarca() { return marca; }
+    public void setMarca(String marca) { this.marca = marca; }
+
+    public String getModelo() { return modelo; }
+    public void setModelo(String modelo) { this.modelo = modelo; }
+
+    public int getAno() { return ano; }
+    public void setAno(int ano) { this.ano = ano; }
+
+    public void exibeDetalhes() {
+        System.out.println("Detalhes do Carro:");
+        System.out.println("Marca: " + marca);
+        System.out.println("Modelo: " + modelo);
+        System.out.println("Ano: " + ano);
+    }
+}
+
+-------------------------------------------------------------------------------
+
+package Projeto;
+
+import java.util.Scanner;
+
+public class ExecutaCarro {
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        Carro carro = new Carro();
+
+        System.out.print("Digite a marca do carro: ");
+        carro.setMarca(teclado.nextLine());
+
+        System.out.print("Digite o modelo do carro: ");
+        carro.setModelo(teclado.nextLine());
+
+        System.out.print("Digite o ano do carro: ");
+        carro.setAno(teclado.nextInt());
+
+        System.out.println();
+        carro.exibeDetalhes();
+
+        teclado.close();
+    }
+}
+
+===============================================================================
+
+5)
+
+package Projeto;
+
+public class Triangulo {
+    private double ladoA;
+    private double ladoB;
+    private double ladoC;
+
+    public double getLadoA() { return ladoA; }
+    public void setLadoA(double ladoA) { this.ladoA = ladoA; }
+
+    public double getLadoB() { return ladoB; }
+    public void setLadoB(double ladoB) { this.ladoB = ladoB; }
+
+    public double getLadoC() { return ladoC; }
+    public void setLadoC(double ladoC) { this.ladoC = ladoC; }
+
+    public boolean verificaEquilatero() {      
+        return (ladoA == ladoB) && (ladoB == ladoC);
+    }
+}
+
+-------------------------------------------------------------------------------
+
+package Projeto;
+
+import java.util.Scanner;
+
+public class ExecutaTriangulo {
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        Triangulo triangulo = new Triangulo();
+
+        System.out.println("Digite os três lados do triângulo:");
+        System.out.print("Lado A: ");
+        triangulo.setLadoA(teclado.nextDouble());
+
+        System.out.print("Lado B: ");
+        triangulo.setLadoB(teclado.nextDouble());
+
+        System.out.print("Lado C: ");
+        triangulo.setLadoC(teclado.nextDouble());
+
+        if (triangulo.verificaEquilatero()) {
+            System.out.println("O triângulo é Equilátero!");
+        } else {
+            System.out.println("O triângulo NÃO é Equilátero.");
+        }
+
+        teclado.close();
+    }
+}
+
+===============================================================================
+
+6)
+
+package Projeto;
+
+public class Pessoa {
+    private String nome;
+    private int idade;
+    private String cpf;
+
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+
+    public int getIdade() { return idade; }
+    public void setIdade(int idade) { this.idade = idade; }
+
+    public String getCpf() { return cpf; }
+    public void setCpf(String cpf) { this.cpf = cpf; }
+
+    public boolean verificaMaiorDeIdade() {
+        return idade >= 18;
+    }
+}
+
+-------------------------------------------------------------------------------
+
+package Projeto;
+
+import java.util.Scanner;
+
+public class ExecutaPessoa {
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        Pessoa pessoa = new Pessoa();
+
+        System.out.print("Digite o nome da pessoa: ");
+        pessoa.setNome(teclado.nextLine());
+
+        System.out.print("Digite o CPF: ");
+        pessoa.setCpf(teclado.nextLine());
+
+        System.out.print("Digite a idade: ");
+        pessoa.setIdade(teclado.nextInt());
+
+        System.out.println("\n--- Resultado ---");
+        System.out.println("Nome: " + pessoa.getNome());
+        System.out.println("CPF: " + pessoa.getCpf());
+        
+        if (pessoa.verificaMaiorDeIdade()) {
+            System.out.println("Status: Maior de idade.");
+        } else {
+            System.out.println("Status: Menor de idade.");
+        }
+
+        teclado.close();
+    }
+}
+
+===============================================================================
+
+7)
+
+package Projeto;
+
+public class ClasseCarro {
+    
+    private String placa;
+    private int numChassi;
+
+    public void acelerar() {
+        System.out.println("O carro está acelerando!");
+    }
+
+    public boolean frear() {
+        System.out.println("O carro freou.");
+        return true; 
+    }   
+}
+
+===============================================================================
+
+8)
+
+package Projeto;
+
+public class ClasseRetangulo {
+
+    private int x;
+    private int y;
+ 
+    public Retangulo (int a, int b) {
+        this.x = a;
+        this.y = b;
+    }
+    public void inserir_lados(int a, int b) {
+        this.x = a;
+        this.y = b;
+    }   
+    public void calcular_area() {
+        int area = x * y;
+        System.out.println("A área do retângulo é: " + area);
+    }   
+}
