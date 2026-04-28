@@ -1,0 +1,218 @@
+1)
+a)
+Classe:  É uma forma de definir um tipo de dado. Para defini-los, os atributos são usados, e para definir o comportamento, métodos são usados. Após sua definição, diferentes objetos poderão ser criados utilizando a classe. Para resumir, são conjuntos de objetos que possuem o mesmo tipo, é o “molde” do código.
+
+b) 
+Objeto: É o que você cria a partir da classe (molde), pode ser representado como uma entidade que possui estado e comportamento, é uma instância da classe.
+Estado – É um dado que pode ser representado por um valor ou sua cor;
+Comportamento – É como um conjunto de ações que juntos podem executar uma tarefa.
+
+c)
+Atributo: São as características ou propriedades de uma classe
+
+d)
+Método: São as ações que o objeto pode fazer.
+
+e)
+Encapsulamento:  É a união do estado e do comportamento de um objeto. Ao criar uma classe, faz-se um encapsulamento.
+
+2) Construtor é usado para inicializar o objeto, enquanto o método executa uma ação a qualquer momento.
+
+3) Eles definem a visibilidade das classes, atributos e métodos:
+Public: Pode ser acessado por qualquer outra classe;
+Private: Pode ser acessado apenas dentro da própria classe onde foi criado;
+Protected: Pode ser acessado por classes no mesmo pacote ou por subclasses;
+Default (padrão): Se nada for definido pelo usuário, ele só é acessível por classes dentro do mesmo pacote.
+
+4)
+String: Textos e cadeias de caracteres. Ex: String nome = “Victor”;
+Int: Números inteiros. Ex: int idade = 19;
+Boolean: Valores lógicos, verdadeiro ou falso. Ex: boolean estaLigado = true;
+
+5)
+É um método da classe mãe Object (de onde todas as classes em Java herdam). Sua função é de retornar uma representação em texto do objeto.
+Ao tentar imprimir um objeto, caso não sobrescrever o toString(), apenas o nome da classe um o endereço de memória serão vistos. Ao sobrescreve-lo, o usuário pode definir o que aparecerá ao dar o comando System.out.println(objeto).
+
+6)
+Ao tentar acessar, o Java gerará um erro de compilação, o código nem chega a iniciar. Para acessar ou modificar esses dados, são usados os métodos Getters e Setters.
+Getter: Método público que retorna o valor do atributo privado;
+Setter: Método público que define ou altera o valor do atributo privado.
+
+CÓDIGO:
+7)
+package pkg;
+
+import java.util.Scanner;
+
+public class Produto {
+		// TODO Auto-generated constructor stub
+	String nome;
+	double preco;
+	int quantidade;
+	
+	void exibirInformacoes() {
+		System.out.println("Produto: " + nome + " Preço: R$ " + preco + " Quantidade: " + quantidade);
+	}
+	
+	double calcularValorTotal() {
+		return preco * quantidade;
+	}
+
+public static void main(String[] args) {
+	Scanner teclado = new Scanner(System.in);
+	
+	Produto p1 = new Produto();
+	p1.nome  = "Celular";
+	p1.preco = 2000.0;
+	p1.quantidade = 1;
+	
+	Produto p2 = new Produto();
+	System.out.println("Produto: ");
+	p2.nome = teclado.nextLine();
+	System.out.println("Preço do Produto: R$ ");
+	p2.preco = teclado.nextDouble();
+	System.out.println("Quantidade: ");
+	p2.quantidade = teclado.nextInt();
+	
+	p1.exibirInformacoes();
+	System.out.println("Total em estoque P1: R$"+p1.calcularValorTotal());
+	
+	p2.exibirInformacoes();
+	System.out.println("Total em estoque P2: R$"+p2.calcularValorTotal());
+}	
+}	
+
+-------------------------------------------------------------------------------------------------------------------------
+
+8)
+package pkg;
+import java.util.Scanner;
+
+public class Usuario {
+
+	String nomeUsuario;
+	String senha;
+	boolean logado = false; 
+	
+			public void login(String usuario, String senhaDigitada) {
+        if (this.nomeUsuario.equals(usuario) && this.senha.equals(senhaDigitada)) {
+            this.logado = true;
+            System.out.println("Login realizado com sucesso!");
+        } else {
+            System.out.println("Usuário ou senha incorretos.");
+        }
+    }
+
+    public void logout() {
+        this.logado = false;
+        System.out.println("Logout efetuado.");
+    }
+
+    public void exibirStatus() {
+        String status = logado ? "Logado" : "Desconectado";
+        System.out.println("Status atual: " + status);
+    }
+
+public static void main(String[] args) {
+    Scanner leitor = new Scanner(System.in);
+    Usuario user = new Usuario();
+    user.nomeUsuario = "admin";
+    user.senha = "1234";
+
+    System.out.print("Digite o usuário: ");
+    String u = leitor.nextLine();
+    System.out.print("Digite a senha: ");
+    String s = leitor.nextLine();
+
+    user.login(u, s);
+    user.exibirStatus();
+
+    if (user.logado) {
+        System.out.print("Deseja fazer logout? (s/n): ");
+        if (leitor.next().equalsIgnoreCase("s")) {
+            user.logout();
+            user.exibirStatus();
+        }
+    }
+}
+}
+
+-------------------------------------------------------------------------------------------------------------------------
+
+9)
+package pkg;
+import java.util.Scanner;
+
+public class Filme {
+	String titulo;
+    String diretor;
+    int duracaoEmMinutos;
+    String genero;
+
+    public void exibirDetalhes() {
+        System.out.println("\n--- Detalhes do Filme ---");
+        System.out.println("Título: " + titulo);
+        System.out.println("Diretor: " + diretor);
+        System.out.println("Duração: " + duracaoEmMinutos + " min");
+        System.out.println("Gênero: " + genero);
+    }
+
+    public boolean ehLongo() {
+        return duracaoEmMinutos > 120;
+    }
+    public static void main(String[] args) {
+        Scanner leitor = new Scanner(System.in);
+        Filme f = new Filme();
+
+        System.out.print("Título: ");
+        f.titulo = leitor.nextLine();
+        System.out.print("Diretor: ");
+        f.diretor = leitor.nextLine();
+        System.out.print("Gênero: ");
+        f.genero = leitor.nextLine();
+        System.out.print("Duração (min): ");
+        f.duracaoEmMinutos = leitor.nextInt();
+
+        f.exibirDetalhes();
+        if (f.ehLongo()) {
+            System.out.println("Este é um filme longo!");
+        } else {
+            System.out.println("Este é um filme de duração normal.");
+        }
+    }
+}
+
+-------------------------------------------------------------------------------------------------------------------------
+
+10)
+package pkg;
+import java.util.Scanner;
+
+public class Tarefa {
+	String descricao;
+    boolean concluida = false;
+
+    public void concluirTarefa() {
+        this.concluida = true;
+    }
+
+    public void exibirTarefa() {
+        String status = concluida ? "[Concluída]" : "[Pendente]";
+        System.out.println(status + " " + descricao);
+    }
+    public static void main(String[] args) {
+        Scanner leitor = new Scanner(System.in);
+        Tarefa[] lista = new Tarefa[3];
+        for (int i = 0; i < 3; i++) {
+            lista[i] = new Tarefa();
+            System.out.print("Descrição da tarefa " + (i + 1) + ": ");
+            lista[i].descricao = leitor.nextLine();
+        }
+        System.out.println("\nMarcando a tarefa 1 como concluída...");
+        lista[0].concluirTarefa();
+        System.out.println("\n--- Lista de Tarefas ---");
+        for (Tarefa t : lista) {
+            t.exibirTarefa();
+        }
+    }
+}
