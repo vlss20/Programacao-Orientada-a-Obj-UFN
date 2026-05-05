@@ -1,0 +1,219 @@
+1)
+
+package Projeto;
+
+public class Figura {
+    String cor;
+    boolean preenchido;
+}
+
+-------------------------------------------------------------------------------
+
+package Projeto;
+
+public class Retangulo extends Figura {
+    double largura;
+    double altura;
+
+    public double calcularArea() {
+        return largura * altura;
+    }
+}
+
+-------------------------------------------------------------------------------
+
+package Projeto;
+
+public class ExecutaFigura {
+    public static void main(String[] args) {
+        Retangulo meuRetangulo = new Retangulo();
+        meuRetangulo.cor = "Azul";
+        meuRetangulo.preenchido = true;
+        meuRetangulo.largura = 5.0;
+        meuRetangulo.altura = 10.0;
+        
+        System.out.println("Cor: " + meuRetangulo.cor);
+        System.out.println("Preenchido: " + meuRetangulo.preenchido);
+        System.out.println("Área do Retângulo: " + meuRetangulo.calcularArea());
+    }
+}
+
+===============================================================================
+
+2)
+
+package Projeto;
+
+public class Pessoa {
+    String nome;
+    public Pessoa (String nome) {
+        this.nome = nome;
+    }
+    public void trabalhar() {
+        System.out.println("A pessoa esta trabalhando");
+    }
+}
+
+-------------------------------------------------------------------------------
+
+package Projeto;
+
+public class Funcionario extends Pessoa {
+    public Funcionario(String nome) {
+        super(nome); 
+    }
+    public void trabalhar() {
+        System.out.println("O funcionário está trabalhando");
+    }
+}
+
+-------------------------------------------------------------------------------
+
+package Projeto;
+
+public class ExecutaFuncionario {
+    public static void main(String[] args) {
+        Funcionario f = new Funcionario("Victor");
+        
+        System.out.println("Nome: " + f.nome);
+        f.trabalhar(); 
+    }
+}
+
+===============================================================================
+
+3)
+
+package Projeto;
+
+public class Animal {
+    String tipo;
+
+    public void andar() {
+        System.out.println("Todos andam, mas o modo é variado");
+    }
+}
+
+-------------------------------------------------------------------------------
+
+package Projeto;
+
+public class SerHumano extends Animal {
+    String nome;
+    int idade;
+
+    public String falar() {
+        return "Nem todos falam";
+    }
+}
+
+-------------------------------------------------------------------------------
+
+package Projeto;
+
+public class Pessoa2 extends SerHumano {
+}
+
+-------------------------------------------------------------------------------
+
+package Projeto;
+
+import java.util.Scanner;
+
+public class Principal {
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        Pessoa2 p = new Pessoa2();
+
+        System.out.println("--- Cadastro de Pessoa ---");
+        System.out.print("Informe o nome: ");
+        p.nome = teclado.nextLine();
+        
+        System.out.print("Informe a idade: ");
+        p.idade = teclado.nextInt();
+        teclado.nextLine(); 
+        System.out.print("Informe o tipo (ex: Mamífero): ");
+        p.tipo = teclado.nextLine();
+
+        System.out.println("\n--- Resumo dos Dados ---");
+        System.out.println("Nome: " + p.nome);
+        System.out.println("Idade: " + p.idade + " anos");
+        System.out.println("Tipo: " + p.tipo);
+        
+        System.out.println("\n--- Ações ---");
+        p.andar(); 
+        System.out.println("Falar: " + p.falar()); 
+        
+        teclado.close();
+    }
+}
+
+===============================================================================
+
+4)
+
+package Projeto;
+
+public class Computador {
+    
+    protected String Marca;
+
+    private String Modelo;
+
+    public Computador(String marca, String modelo) {
+        this.Marca = marca;
+        this.Modelo = modelo;
+    }
+
+    public String exibeModelo() {
+        return Modelo;
+    }
+}
+
+-------------------------------------------------------------------------------
+
+package Projeto;
+
+public class Notebook extends Computador {
+
+    public Notebook(String marca, String modelo) {
+        super(marca, modelo);
+    }
+
+    public String exibeMarca() {
+        return Marca; 
+    }
+
+    public static void main(String[] args) {
+        Notebook meuNote = new Notebook("Dell", "Inspiron 15");
+        
+        System.out.println("--- Dados do Notebook ---");
+        System.out.println("Marca: " + meuNote.exibeMarca());
+        System.out.println("Modelo: " + meuNote.exibeModelo());
+    }
+}
+
+-------------------------------------------------------------------------------
+
+package Projeto;
+
+public class Netbook extends Computador {
+
+    public Netbook(String marca, String modelo) {
+        super(marca, modelo);
+    }
+
+    public String exibeMarca() {
+        return Marca; 
+    }
+    
+    public static void main(String[] args) {
+        Netbook meuNet = new Netbook("Asus", "Eee PC");
+        
+        System.out.println("--- Dados do Netbook ---");
+        System.out.println("Marca: " + meuNet.exibeMarca());
+        System.out.println("Modelo: " + meuNet.exibeModelo());
+    }
+}
+
+===============================================================================
